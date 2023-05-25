@@ -10,7 +10,7 @@ class Parking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'vehicle_id', 'zone_id', 'start_time', 'end_time', 'total_price', 'is_active'
+        'user_id', 'vehicle_id', 'zone_id', 'start_time', 'end_time', 'total_price', 'is_active',
     ];
 
     protected $casts = [

@@ -11,6 +11,6 @@ class Vehicles extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'plate_number', 'brand', 'model'
+        'user_id', 'plate_number', 'brand', 'model',
     ];
 }
