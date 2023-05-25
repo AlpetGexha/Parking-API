@@ -13,12 +13,7 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): Response
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -34,8 +29,12 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return response()->noContent();
+        $device = substr($request->userAgent() ?? '', 0, 255);
+
+        return response()->json([
+            'access_token' => $user->createToken($device)->plainTextToken,
+        ], Response::HTTP_CREATED);
     }
 }
