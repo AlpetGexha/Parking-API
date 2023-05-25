@@ -18,5 +18,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Vehicles::factory(100)->create();
+        \App\Models\Parking::factory(100)->create();
+        // \App\Models\Zone::factory(100)->create();
+        \App\Models\ParkingSpot::factory(100)->create();
+        \App\Models\Reservation::factory(20)->create();
+
+        $this->call([
+            // UserSeeder::class,
+            // ParkingSeeder::class,
+            ZoneSeeder::class,
+            // ParkingSpotSeeder::class,
+        ]);
     }
 }
