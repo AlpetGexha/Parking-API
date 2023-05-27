@@ -8,6 +8,7 @@ use App\Http\Requests\ParkingStoreRequest;
 use App\Http\Resources\Api\ParkingResource;
 use App\Interfaces\ParkingRepositoryInterface;
 use App\Models\Parking;
+use App\Service\ParkingPriceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -65,7 +66,7 @@ class ParkingApiController extends Controller
         $parkingId = $request->get('id');
         $parkingItem = $this->parkingRepository->deleteItem($parkingId);
 
-        if (! $parkingItem) {
+        if (!$parkingItem) {
             return response()->json([
                 'success' => false,
                 'status' => 401,
@@ -97,6 +98,7 @@ class ParkingApiController extends Controller
     {
         $parking->update([
             'stop_time' => now(),
+            'total_price' => ParkingPriceService::calculatePrice($parking->zone_id, $parking->start_time),
         ]);
 
         return ParkingResource::make($parking);

@@ -22,6 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['controller' => ParkingApiController::class, 'as' => 'parkings.', 'prefix' => 'parkings'], function () {
         Route::post('start', 'start')->name('start');
         Route::get('{parking}', 'show')->name('show');
-        // Route::put('/{parking}', 'stop')->name('stop');
+        Route::put('/{parking}', 'stop')->name('stop');
     });
 });

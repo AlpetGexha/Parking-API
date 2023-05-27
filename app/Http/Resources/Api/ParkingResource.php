@@ -2,12 +2,21 @@
 
 namespace App\Http\Resources\Api;
 
+use App\Models\Zone;
+use App\Service\ParkingPriceService;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ParkingResource extends JsonResource
 {
     public function toArray($request)
     {
+        $totalPrice = $this->total_price ?? ParkingPriceService::calculatePrice(
+            $this->zone_id,
+            $this->start_time,
+            $this->end_time
+        );
+
         return [
             'id' => $this->id,
             'zone' => [
@@ -21,7 +30,7 @@ class ParkingResource extends JsonResource
             ],
             'start_time' => $this->start_time,
             'end_time' => $this?->end_time, // ->toDateTimeString() to avoid errors about using a method on a null object value.
-            'total_price' => $this->total_price,
+            'total_price' => $totalPrice,
             'is_active' => $this?->is_active,
         ];
     }
