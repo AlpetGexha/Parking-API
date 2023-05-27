@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ParkingApiController;
 use App\Http\Controllers\Auth\LoginUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\VehiclesController;
@@ -16,5 +17,11 @@ Route::post('auth/login', LoginUserController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('vehicles', VehiclesController::class);
 
-    Route::get('/zones', ZoneController::class)->name('zone');
+    Route::get('zones', ZoneController::class)->name('zone');
+
+    Route::group(['controller' => ParkingApiController::class, 'as' => 'parkings.', 'prefix' => 'parkings'], function () {
+        Route::post('start', 'start')->name('start');
+        Route::get('{parking}', 'show')->name('show');
+        // Route::put('/{parking}', 'stop')->name('stop');
+    });
 });

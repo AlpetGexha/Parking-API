@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vehicles extends Model
@@ -31,5 +32,14 @@ class Vehicles extends Model
         static::addGlobalScope('user', function (EloquentBuilder $builder) {
             $builder->where('user_id', auth()->id());
         });
+    }
+
+    // protected $hidden = [
+    //     'deleted_at',
+    // ];
+
+    public function parking(): HasMany
+    {
+        return $this->hasMany(Parking::class);
     }
 }
