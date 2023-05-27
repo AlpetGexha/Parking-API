@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreVehiclesRequest;
-use App\Http\Resources\VehiclesResource;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\StoreVehiclesRequest;
+use App\Http\Resources\Api\VehiclesResource;
 use App\Models\vehicles;
 use Illuminate\Http\Response;
 

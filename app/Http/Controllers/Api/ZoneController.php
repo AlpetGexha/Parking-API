@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controller;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ZoneResource;
+use App\Http\Resources\Api\ZoneResource;
 use App\Models\Zone;
-use Illuminate\Http\Request;
 
 class ZoneController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
         return ZoneResource::collection(Zone::all());
     }
