@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ZoneResource;
 use App\Models\Zone;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ZoneController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke()
     {
-        return ZoneResource::collection(Zone::all());
+        return Cache::remember('zone', 60 * 60 * 12 * 7, function () {
+            return ZoneResource::collection(Zone::all());
+        });
     }
 }
