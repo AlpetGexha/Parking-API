@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\AuthUserScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,25 +21,9 @@ class Parking extends Model
         'stop_time' => 'datetime',
     ];
 
-    // create boot method
-    protected static function boot()
+    protected static function booted(): void
     {
-        parent::boot();
-
-        // check if we have a creating event
-        static::creating(function (self $parking) {
-            if (auth()->check()) {
-                $parking->user_id = auth()->id();
-            }
-
-            $parking->start_time = now();
-
-        });
-
-        // Global Scope for auth user
-        static::addGlobalScope('user', function (Builder $builder) {
-            $builder->where('user_id', auth()->id());
-        });
+        static::addGlobalScope(new AuthUserScope);
     }
 
     public function user(): BelongsTo
