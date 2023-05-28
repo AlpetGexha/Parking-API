@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ParkingStoreRequest;
 use App\Http\Requests\Api\UpdateParking;
-use App\Http\Requests\ParkingStoreRequest;
 use App\Http\Resources\Api\ParkingResource;
 use App\Interfaces\ParkingRepositoryInterface;
 use App\Models\Parking;
@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ParkingApiController extends Controller
+class ParkingController extends Controller
 {
     public ParkingRepositoryInterface  $parkingRepository;
 
@@ -66,7 +66,7 @@ class ParkingApiController extends Controller
         $parkingId = $request->get('id');
         $parkingItem = $this->parkingRepository->deleteItem($parkingId);
 
-        if (!$parkingItem) {
+        if (! $parkingItem) {
             return response()->json([
                 'success' => false,
                 'status' => 401,
