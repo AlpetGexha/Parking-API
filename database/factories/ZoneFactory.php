@@ -14,6 +14,8 @@ class ZoneFactory extends Factory
         return [
             'name' => $this->faker->name,
             'price_per_hour' => $this->faker->randomFloat(2, 0, 100),
+            'capacity' => $this->faker->randomNumber(),
+            'available_spots' => $this->faker->randomNumber(),
         ];
     }
 }

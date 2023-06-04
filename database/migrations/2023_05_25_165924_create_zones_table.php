@@ -12,6 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('price_per_hour', 8, 2);
+            $table->integer('capacity')->unsigned()->default(0);
+            $table->integer('available_spots')->unsigned()->default(0);
 
             $table->timestamps();
         });

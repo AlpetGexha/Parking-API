@@ -17,6 +17,7 @@ class ReservationFactory extends Factory
             'user_id' => User::factory(),
             'zone_id' => Zone::factory(),
             'spot_numer' => $this->faker->randomElement(['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7']),
+            'status' => $this->faker->randomElement(['pending', 'confirmed', 'cancelled']),
             'start_time' => $this->faker->dateTimeBetween('now', '+1 week'),
             'end_time' => $this->faker->dateTimeBetween('now', '+1 day'),
         ];

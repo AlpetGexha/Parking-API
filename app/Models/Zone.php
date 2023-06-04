@@ -11,13 +11,8 @@ class Zone extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price_per_hour',
+        'name', 'price_per_hour', 'capacity', 'available_spots'
     ];
-
-    public function parking()
-    {
-        return $this->hasMany(Parking::class);
-    }
 
     // boot
     public static function boot()
@@ -35,5 +30,15 @@ class Zone extends Model
         static::creating(function () {
             Cache::forget('zone');
         });
+    }
+
+    public function parking()
+    {
+        return $this->hasMany(Parking::class);
+    }
+
+    public function scopeHasAvailableSpots($query)
+    {
+        return $query->where('available_spots', '>', 0);
     }
 }

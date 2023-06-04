@@ -9,7 +9,6 @@ class ParkingObserve
     /**
      * Handle the Parking "created" event.
      */
-
     public function creating(Parking $parking): void
     {
         if (auth()->check()) {

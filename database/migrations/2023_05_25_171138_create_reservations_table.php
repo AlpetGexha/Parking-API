@@ -13,6 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('zone_id')->constrained();
             $table->string('spot_numer')->nullable();
+            $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
             $table->timestamps();
