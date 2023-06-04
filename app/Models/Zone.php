@@ -11,7 +11,7 @@ class Zone extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price_per_hour', 'capacity', 'available_spots'
+        'name', 'price_per_hour', 'capacity', 'available_spots',
     ];
 
     // boot

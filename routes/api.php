@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group([
         'controller' => ReservationApiController::class,
         'as' => 'reservations',
-        'prefix' => 'reservations'
+        'prefix' => 'reservations',
     ], function () {
         Route::get('index', 'index')->name('index');
         Route::get('show', 'show')->name('show');

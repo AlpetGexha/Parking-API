@@ -10,9 +10,8 @@ use App\Models\Reservation;
 use App\Models\Zone;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Response;
-
+use Illuminate\Routing\Controller;
 
 class ReservationApiController extends Controller
 {
@@ -46,7 +45,7 @@ class ReservationApiController extends Controller
 
         if ($zone->hasAvailableSpots()) {
             return response()->json([
-                'message' => 'No available spots in this zone'
+                'message' => 'No available spots in this zone',
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -61,7 +60,7 @@ class ReservationApiController extends Controller
     {
         $reservationId = $request->get('id');
         $item = $this->reservationRepository->getItemById($reservationId);
-        if (!$item) {
+        if (! $item) {
             return response()->json([
                 'success' => false,
                 'status' => 401,
@@ -84,7 +83,7 @@ class ReservationApiController extends Controller
         $reservation->update($request->all());
 
         return response()->json([
-            'data' => $reservation
+            'data' => $reservation,
         ], Response::HTTP_ACCEPTED);
     }
 
@@ -122,15 +121,15 @@ class ReservationApiController extends Controller
         );
     }
 
-    protected function updateReservationStatus(int $id, String $status, String $message): JsonResponse
+    protected function updateReservationStatus(int $id, string $status, string $message): JsonResponse
     {
         $reservation = Reservation::findOrFail($id);
         $reservation->update([
-            'status' => $status
+            'status' => $status,
         ]);
 
         return response()->json([
-            'message' => $message
+            'message' => $message,
         ], Response::HTTP_OK);
     }
 }

@@ -6,7 +6,6 @@ use App\Models\Reservation;
 
 class ReservationObserver
 {
-
     public function creating(Reservation $reservation): void
     {
         if (auth()->check()) {
