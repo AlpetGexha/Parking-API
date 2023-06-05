@@ -20,6 +20,5 @@ class ZoneController extends Controller
         return Cache::remember('zone', 60 * 60 * 12 * 7, function () {
             return ZoneResource::collection(Zone::all());
         });
-
     }
 }

@@ -45,7 +45,6 @@ class ParkingRepository implements ParkingRepositoryInterface
 
         if (! $item) {
             return false;
-
         } else {
             return $item;
         }
@@ -59,13 +58,11 @@ class ParkingRepository implements ParkingRepositoryInterface
         $item = $this->modelName::find($itemId);
         if (! $item) {
             return false;
-
         } else {
             $item->delete();
 
             return true;
         }
-
     }
 
     /**
@@ -73,7 +70,6 @@ class ParkingRepository implements ParkingRepositoryInterface
      **/
     public function createItem(array $newDetails)
     {
-
         return $this->modelName::create($newDetails);
     }
 
