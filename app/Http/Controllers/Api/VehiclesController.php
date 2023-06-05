@@ -8,6 +8,9 @@ use App\Http\Resources\Api\VehiclesResource;
 use App\Models\vehicles;
 use Illuminate\Http\Response;
 
+/**
+ * @group Vehicles
+ */
 class VehiclesController extends Controller
 {
     public function index()

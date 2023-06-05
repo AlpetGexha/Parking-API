@@ -8,6 +8,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+/**
+ * @group Auth
+ */
 class EmailVerificationNotificationController extends Controller
 {
     /**

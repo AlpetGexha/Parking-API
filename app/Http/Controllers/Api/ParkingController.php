@@ -13,6 +13,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Pariking
+ */
 class ParkingController extends Controller
 {
     public ParkingRepositoryInterface  $parkingRepository;
