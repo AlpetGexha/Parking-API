@@ -7,6 +7,9 @@ use App\Http\Resources\Api\ZoneResource;
 use App\Models\Zone;
 use Illuminate\Support\Facades\Cache;
 
+/**
+ * @group Zone
+ */
 class ZoneController extends Controller
 {
     /**

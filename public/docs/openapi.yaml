@@ -1,0 +1,422 @@
+openapi: 3.0.3
+info:
+  title: 'Pariking API | Laravel'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/auth/register:
+    post:
+      summary: ''
+      operationId: postApiAuthRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ibhogkdpaisviqwprv
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: mosciski.emmalee@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: provident
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/auth/login:
+    post:
+      summary: ''
+      operationId: postApiAuthLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ledner.eda@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: eligendi
+              required:
+                - email
+                - password
+      security: []
+  /api/parkings/start:
+    post:
+      summary: ''
+      operationId: postApiParkingsStart
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Pariking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vehicle_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                zone_id:
+                  type: integer
+                  description: ''
+                  example: 2
+              required:
+                - vehicle_id
+                - zone_id
+      security: []
+  '/api/parkings/{id}':
+    get:
+      summary: ''
+      operationId: getApiParkingsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Pariking
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the parking.'
+        example: 9
+        required: true
+        schema:
+          type: integer
+  '/api/parkings/{parking_id}':
+    put:
+      summary: ''
+      operationId: putApiParkingsParking_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Pariking
+      security: []
+    parameters:
+      -
+        in: path
+        name: parking_id
+        description: 'The ID of the parking.'
+        example: 11
+        required: true
+        schema:
+          type: integer
+  /api/reservations/index:
+    get:
+      summary: ''
+      operationId: getApiReservationsIndex
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+  /api/reservations/show:
+    get:
+      summary: ''
+      operationId: getApiReservationsShow
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+  /api/reservations/store:
+    post:
+      summary: ''
+      operationId: postApiReservationsStore
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                zone_id:
+                  type: string
+                  description: ''
+                  example: magni
+                spot_numer:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - zone_id
+      security: []
+  '/api/reservations/update/{reservation_id}':
+    post:
+      summary: ''
+      operationId: postApiReservationsUpdateReservation_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: null
+                zone_id:
+                  type: string
+                  description: ''
+                  example: null
+                spot_numer:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ltnwvxchixnhlyhggwchd
+                start_time:
+                  type: string
+                  description: ''
+                  example: null
+                end_time:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+    parameters:
+      -
+        in: path
+        name: reservation_id
+        description: 'The ID of the reservation.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/reservations/delete/{reservation_id}':
+    delete:
+      summary: ''
+      operationId: deleteApiReservationsDeleteReservation_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+    parameters:
+      -
+        in: path
+        name: reservation_id
+        description: 'The ID of the reservation.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/reservations/reject/{id}':
+    post:
+      summary: ''
+      operationId: postApiReservationsRejectId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the reject.'
+        example: optio
+        required: true
+        schema:
+          type: string
+  '/api/reservations/confirm/{id}':
+    post:
+      summary: ''
+      operationId: postApiReservationsConfirmId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the confirm.'
+        example: id
+        required: true
+        schema:
+          type: string
+  '/api/reservations/cancel/{id}':
+    post:
+      summary: ''
+      operationId: postApiReservationsCancelId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Reservation
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the cancel.'
+        example: earum
+        required: true
+        schema:
+          type: string
+  /api/vehicles:
+    get:
+      summary: ''
+      operationId: getApiVehicles
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Vehicles
+      security: []
+    post:
+      summary: ''
+      operationId: postApiVehicles
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Vehicles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plate_number:
+                  type: string
+                  description: ''
+                  example: a
+              required:
+                - plate_number
+      security: []
+  '/api/vehicles/{id}':
+    get:
+      summary: ''
+      operationId: getApiVehiclesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Vehicles
+      security: []
+    put:
+      summary: ''
+      operationId: putApiVehiclesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Vehicles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plate_number:
+                  type: string
+                  description: ''
+                  example: distinctio
+              required:
+                - plate_number
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiVehiclesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Vehicles
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the vehicle.'
+        example: 9
+        required: true
+        schema:
+          type: integer
+  /api/zones:
+    get:
+      summary: 'Handle the incoming request.'
+      operationId: handleTheIncomingRequest
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Zone
+      security: []
+tags:
+  -
+    name: Auth
+    description: ''
+  -
+    name: Pariking
+    description: ''
+  -
+    name: Reservation
+    description: ''
+  -
+    name: Vehicles
+    description: ''
+  -
+    name: Zone
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

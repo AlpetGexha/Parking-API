@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
+/**
+ * @group Reservation
+ */
 class ReservationApiController extends Controller
 {
     public ReservationRepositoryInterface  $reservationRepository;

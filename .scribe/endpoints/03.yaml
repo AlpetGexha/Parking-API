@@ -1,0 +1,125 @@
+name: Pariking
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/parkings/start
+    metadata:
+      groupName: Pariking
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      vehicle_id:
+        name: vehicle_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        custom: []
+      zone_id:
+        name: zone_id
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      vehicle_id: 5
+      zone_id: 2
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/parkings/{id}'
+    metadata:
+      groupName: Pariking
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the parking.'
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 9
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/parkings/{parking_id}'
+    metadata:
+      groupName: Pariking
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      parking_id:
+        name: parking_id
+        description: 'The ID of the parking.'
+        required: true
+        example: 11
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      parking_id: 11
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
