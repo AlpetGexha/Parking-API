@@ -1,4 +1,2 @@
 # Laravel Pariking API
 
-WORKING...
-
